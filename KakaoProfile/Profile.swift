@@ -8,27 +8,13 @@
 import UIKit
 
 protocol ProfileDelegate: AnyObject {
-    
     func profileDidSet(_ profile: Profile)
-    
 }
 
-class Profile {
-    var image: UIImage?
-    var name: String
-    var description: String
+protocol Profile {
+    var profileImageContent: UIImage? { get set }
+    var profileName: String? { get set }
+    var profileDescription: String? { get set }
     
-    init(name: String, description: String, image: UIImage? = nil) {
-        self.name = name
-        self.description = description
-        self.image = image
-    }
-    
-    weak var delegate: ProfileDelegate?
-    func confirmNewProfile(name: String?, description: String?, image: UIImage? = nil) {
-        self.name = name ?? self.name
-        self.description = description ?? self.description
-        self.image = image ?? self.image
-        delegate?.profileDidSet(self)
-    }
+    func confirmNewProfile(name: String?, description: String?, image: UIImage?) -> Void
 }

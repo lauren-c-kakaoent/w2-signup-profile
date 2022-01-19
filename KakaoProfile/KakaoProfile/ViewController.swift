@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, ProfileDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var nameLabel: UILabel!
@@ -30,19 +30,14 @@ class ViewController: UIViewController, ProfileDelegate {
         
     }
     
-    func profileDidSet(_ profile: Profile) {
-        self.nameLabel.text = profile.name
-        self.descriptionLabel.text = profile.description
-        self.profileImage.image = profile.image
-    }
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let profile = Profile(name: self.nameLabel.text ?? "", description: self.descriptionLabel.text ?? "", image: self.profileImage.image )
-        profile.delegate = self
+        
         if let destination = segue.destination as? EditViewController {
-            destination.profile = profile
-                }
+            destination.profileName = self.nameLabel.text
+            destination.profileDescription = self.descriptionLabel.text
+            destination.profileImageContent = self.profileImage.image
+            destination.delegate = self
+        }
     }
     
     
@@ -55,3 +50,11 @@ class ViewController: UIViewController, ProfileDelegate {
 
 }
 
+extension ViewController: ProfileDelegate {
+    
+    func profileDidSet(_ profile: Profile) {
+        self.nameLabel.text = profile.profileName
+        self.descriptionLabel.text = profile.profileDescription
+        self.profileImage.image = profile.profileImageContent
+    }
+}

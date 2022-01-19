@@ -7,29 +7,51 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+
+class LoginViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet var idTextEdit: UITextField!
     @IBOutlet var passwordTextEdit: UITextField!
+    @IBOutlet var clearIdButton: UIButton!
+    @IBOutlet var clearPasswordButton: UIButton!
     
-    let realId = "lauren.c"
+    let realId = "1234"
     let realPassword = "1234"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        clearIdButton.isHidden = true
+        clearPasswordButton.isHidden = true
     }
 
-    @IBAction func loginButtonTouched(_ sender: UIButton) {
-        let inputId = idTextEdit.text
-        let inputPassword = passwordTextEdit.text
-        
-        if isValidLoginForm(id: inputId, password: inputPassword) {
-            
-        }
-    }
     
     private func isValidLoginForm(id: String?, password: String?) -> Bool {
         return id == self.realId && password == self.realPassword
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "showNews" {
+            let inputId = idTextEdit.text
+            let inputPassword = passwordTextEdit.text
+            return isValidLoginForm(id: inputId, password: inputPassword)
+        }
+        return true
+    }
+    
+    @IBAction func clearIdButtonTouched(_ sender: UIButton) {
+        idTextEdit.text = ""
+        clearIdButton.isHidden = true
+    }
+    @IBAction func clearPasswordButtonTouched(_ sender: UIButton) {
+        passwordTextEdit.text = ""
+        clearPasswordButton.isHidden = true
+    }
+    @IBAction func idInputChanged(_ sender: UITextField) {
+        clearIdButton.isHidden = idTextEdit.text?.isEmpty ?? true
+    }
+    @IBAction func passwordInputChanged(_ sender: UITextField) {
+        clearPasswordButton.isHidden = passwordTextEdit.text?.isEmpty ?? true
+
     }
     
 }

@@ -27,23 +27,104 @@
             </objects>
             <point key="canvasLocation" x="28.985507246376812" y="69.642857142857139"/>
         </scene>
-        <!--Item2 View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="G8q-qK-Jc6">
             <objects>
-                <viewController id="xZD-iJ-d3c" customClass="Item2ViewController" customModule="KakaoProfile" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xZD-iJ-d3c" customClass="LoginViewController" customModule="KakaoProfile" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GIj-fe-H6y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="choonsik.png" translatesAutoresizingMaskIntoConstraints="NO" id="mcc-WI-b8Q">
+                                <rect key="frame" x="127" y="180" width="173" height="175"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" background="xmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WJO-c0-tBh">
+                                <rect key="frame" x="70" y="402" width="274" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="idInputChanged:" destination="xZD-iJ-d3c" eventType="editingChanged" id="N9a-ih-vZ2"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eRK-Ya-Ovu">
+                                <rect key="frame" x="70" y="460" width="274" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="passwordInputChanged:" destination="xZD-iJ-d3c" eventType="editingChanged" id="Qcn-lr-DJp"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Vh-ud-3KY">
+                                <rect key="frame" x="159" y="572" width="97" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="로그인">
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                    <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="k8Z-yu-8Zq" kind="show" identifier="showNews" id="kwp-2C-rHI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4R-2k-s89">
+                                <rect key="frame" x="316" y="409" width="21" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="" cornerStyle="capsule">
+                                    <backgroundConfiguration key="background" image="multiply.circle.fill" catalog="system"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="clearIdButtonTouched:" destination="xZD-iJ-d3c" eventType="touchUpInside" id="Dl5-Ry-Xqc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DIr-DC-D9B">
+                                <rect key="frame" x="316" y="467" width="21" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="" cornerStyle="capsule">
+                                    <backgroundConfiguration key="background" image="multiply.circle.fill" catalog="system"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="clearPasswordButtonTouched:" destination="xZD-iJ-d3c" eventType="touchUpInside" id="gDP-lF-0KS"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="PK8-rp-u2H"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="y9h-qH-cPP"/>
+                    <connections>
+                        <outlet property="clearIdButton" destination="t4R-2k-s89" id="5PC-Aa-YQn"/>
+                        <outlet property="clearPasswordButton" destination="DIr-DC-D9B" id="kRF-ul-zLI"/>
+                        <outlet property="idTextEdit" destination="WJO-c0-tBh" id="Aj1-6i-Wan"/>
+                        <outlet property="passwordTextEdit" destination="eRK-Ya-Ovu" id="bYi-jP-QgT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q2s-Tu-QRg" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1950.7246376811595" y="371.65178571428572"/>
         </scene>
-        <!--Item1-->
+        <!--Main View Controller-->
+        <scene sceneID="O4h-H7-4fZ">
+            <objects>
+                <viewController id="k8Z-yu-8Zq" customClass="MainViewController" customModule="KakaoProfile" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fSm-lD-q6h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="HZi-Nt-st0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="vE8-iM-Gdg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mNM-OR-kpP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2803" y="372"/>
+        </scene>
+        <!--프로필-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="KakaoProfile" customModuleProvider="target" sceneMemberID="viewController">
@@ -83,7 +164,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item1" id="jTk-4F-N4E"/>
+                    <tabBarItem key="tabBarItem" title="프로필" id="jTk-4F-N4E"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="jzN-j7-hrt" id="r2m-Xi-pjt"/>
                         <outlet property="editButton" destination="jii-3G-P1L" id="zEH-4n-DRP"/>
@@ -185,8 +266,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="tek-hJ-PhE"/>
                     <connections>
-                        <outlet property="descriptionTextField" destination="LeV-Lt-xhi" id="vDk-wK-6mv"/>
-                        <outlet property="nameTextField" destination="pdR-iS-67n" id="VHa-YP-rcc"/>
+                        <outlet property="descriptionTextEdit" destination="LeV-Lt-xhi" id="vDk-wK-6mv"/>
+                        <outlet property="nameTextEdit" destination="pdR-iS-67n" id="VHa-YP-rcc"/>
                         <outlet property="profileImage" destination="koa-ZR-1Gu" id="0Rg-ry-m3i"/>
                     </connections>
                 </viewController>
@@ -194,11 +275,11 @@
             </objects>
             <point key="canvasLocation" x="1808.6956521739132" y="-455.35714285714283"/>
         </scene>
-        <!--Item2-->
+        <!--로그인-->
         <scene sceneID="seZ-UN-4uG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eJN-PY-TWi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item2" id="L81-nn-U1b"/>
+                    <tabBarItem key="tabBarItem" title="로그인" id="L81-nn-U1b"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hPm-So-n7i">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -216,10 +297,17 @@
     </scenes>
     <resources>
         <image name="camera.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="choonsik.png" width="210" height="210"/>
         <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
