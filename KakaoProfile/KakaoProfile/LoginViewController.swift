@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class LoginViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet var idTextEdit: UITextField!
     @IBOutlet var passwordTextEdit: UITextField!
@@ -29,7 +28,6 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
 
-    
     private func isValidLoginForm(id: String?, password: String?) -> Bool {
         return id == self.realId && password == self.realPassword
     }
@@ -63,4 +61,3 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate {
     }
     
 }
-

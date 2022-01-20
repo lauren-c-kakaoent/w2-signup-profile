@@ -7,7 +7,7 @@
 
 import Foundation
 
-class User {
+class User: Codable {
     var id: String
     var password: String
     
@@ -41,7 +41,9 @@ class User {
         return true
     }
     
-    
+    func toJson() -> Data? {
+        return try? JSONEncoder().encode(self)
+    }
 }
 
 enum PasswordPattern: String {

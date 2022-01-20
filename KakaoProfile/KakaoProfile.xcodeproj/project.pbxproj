@@ -13,6 +13,9 @@
 		5EA5F5932797C9CA001C5D89 /* choonsik.png in Resources */ = {isa = PBXBuildFile; fileRef = 5EA5F5922797C9CA001C5D89 /* choonsik.png */; };
 		5EA5F5972797EB83001C5D89 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA5F5962797EB83001C5D89 /* SignUpViewController.swift */; };
 		5EA5F59A2797FD8C001C5D89 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA5F5992797FD8C001C5D89 /* User.swift */; };
+		5EA5F59C2798ECBC001C5D89 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA5F59B2798ECBC001C5D89 /* NetworkRequest.swift */; };
+		5EA5F5A127992235001C5D89 /* SignUpEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA5F5A027992235001C5D89 /* SignUpEnum.swift */; };
+		5EA5F5A327992810001C5D89 /* SignUpTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA5F5A227992810001C5D89 /* SignUpTextField.swift */; };
 		5EAE05B5279530A100402029 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAE05B4279530A100402029 /* AppDelegate.swift */; };
 		5EAE05B7279530A100402029 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAE05B6279530A100402029 /* SceneDelegate.swift */; };
 		5EAE05B9279530A100402029 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAE05B8279530A100402029 /* ViewController.swift */; };
@@ -49,6 +52,9 @@
 		5EA5F5922797C9CA001C5D89 /* choonsik.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = choonsik.png; sourceTree = "<group>"; };
 		5EA5F5962797EB83001C5D89 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5EA5F5992797FD8C001C5D89 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5EA5F59B2798ECBC001C5D89 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		5EA5F5A027992235001C5D89 /* SignUpEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEnum.swift; sourceTree = "<group>"; };
+		5EA5F5A227992810001C5D89 /* SignUpTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTextField.swift; sourceTree = "<group>"; };
 		5EAE05B1279530A100402029 /* KakaoProfile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KakaoProfile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EAE05B4279530A100402029 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EAE05B6279530A100402029 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +104,16 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		5EA5F59D27991605001C5D89 /* signup */ = {
+			isa = PBXGroup;
+			children = (
+				5EA5F5962797EB83001C5D89 /* SignUpViewController.swift */,
+				5EA5F5A027992235001C5D89 /* SignUpEnum.swift */,
+				5EA5F5A227992810001C5D89 /* SignUpTextField.swift */,
+			);
+			path = signup;
+			sourceTree = "<group>";
+		};
 		5EAE05A8279530A100402029 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +137,7 @@
 		5EAE05B3279530A100402029 /* KakaoProfile */ = {
 			isa = PBXGroup;
 			children = (
+				5EA5F59D27991605001C5D89 /* signup */,
 				5EA5F5982797FD79001C5D89 /* model */,
 				5EA5F5922797C9CA001C5D89 /* choonsik.png */,
 				5E2152AA2796477900A3696B /* EditViewController.swift */,
@@ -134,7 +151,7 @@
 				5EAE05C2279530A200402029 /* Info.plist */,
 				5EAE05E42795398600402029 /* LoginViewController.swift */,
 				5E2152B2279695B300A3696B /* Profile.swift */,
-				5EA5F5962797EB83001C5D89 /* SignUpViewController.swift */,
+				5EA5F59B2798ECBC001C5D89 /* NetworkRequest.swift */,
 			);
 			path = KakaoProfile;
 			sourceTree = "<group>";
@@ -292,7 +309,10 @@
 				5E2152AB2796477900A3696B /* EditViewController.swift in Sources */,
 				5EA5F5972797EB83001C5D89 /* SignUpViewController.swift in Sources */,
 				5EAE05B9279530A100402029 /* ViewController.swift in Sources */,
+				5EA5F5A327992810001C5D89 /* SignUpTextField.swift in Sources */,
+				5EA5F59C2798ECBC001C5D89 /* NetworkRequest.swift in Sources */,
 				5E2152B3279695B300A3696B /* Profile.swift in Sources */,
+				5EA5F5A127992235001C5D89 /* SignUpEnum.swift in Sources */,
 				5EA5F59A2797FD8C001C5D89 /* User.swift in Sources */,
 				5EAE05B5279530A100402029 /* AppDelegate.swift in Sources */,
 				5EAE05E52795398600402029 /* LoginViewController.swift in Sources */,
