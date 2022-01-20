@@ -333,7 +333,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
-                                    <action selector="passwordInputChanged:" destination="Jra-ag-Jvk" eventType="editingChanged" id="ICz-l2-LAR"/>
+                                    <action selector="passwordEditingChanged:" destination="Jra-ag-Jvk" eventType="editingChanged" id="Iv1-Qx-Qm0"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9cf-pM-Yfc" customClass="SignUpTextField" customModule="KakaoProfile" customModuleProvider="target">
@@ -341,7 +341,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
-                                    <action selector="confirmPasswordInputChanged:" destination="Jra-ag-Jvk" eventType="editingChanged" id="l7Q-zW-yGz"/>
+                                    <action selector="confirmPasswordEditingChanged:" destination="Jra-ag-Jvk" eventType="editingChanged" id="SWE-uI-vNi"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ULN-Gi-PHV" customClass="SignUpTextField" customModule="KakaoProfile" customModuleProvider="target">
@@ -349,7 +349,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="nameEditingChanged:" destination="Jra-ag-Jvk" eventType="editingChanged" id="avz-yi-o2N"/>
+                                    <action selector="nameEditingChanged:" destination="Jra-ag-Jvk" eventType="editingChanged" id="Ymu-GY-BF2"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvu-L4-rdK">
@@ -395,7 +395,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="idInputChanged:" destination="Jra-ag-Jvk" eventType="editingChanged" id="pYn-bg-KIf"/>
+                                    <action selector="idEditingChanged:" destination="Jra-ag-Jvk" eventType="editingChanged" id="eRW-Vq-LyJ"/>
                                 </connections>
                             </textField>
                         </subviews>

@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum SignUpTextFieldMode {
+    case NORMAL, WRITING, ALERT
+}
+
 class SignUpTextField: UITextField {
     
     var validateContent: (() -> Bool)?
@@ -16,12 +20,16 @@ class SignUpTextField: UITextField {
         self.layer.cornerRadius = 6
     }
     
-    func toAlertMode() {
-        self.layer.borderColor = UIColor.red.cgColor
+    func changeModeTo(mode: SignUpTextFieldMode) {
+        switch mode {
+        case .NORMAL:
+            self.layer.borderColor = UIColor.black.cgColor
+        case .ALERT:
+            self.layer.borderColor = UIColor.red.cgColor
+        case .WRITING:
+            self.layer.borderColor = UIColor.blue.cgColor
+        
+        }
+        
     }
-    
-    func toBasicMode() {
-        self.layer.borderColor = UIColor.black.cgColor
-    }
-    
 }

@@ -79,7 +79,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.layer.borderColor = UIColor.blue.cgColor
+        guard let sender = textField as? SignUpTextField else {
+            return
+        }
+        sender.changeModeTo(mode: .WRITING)
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -87,16 +90,26 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             return
         }
         if let hasValidateContent = sender.validateContent, hasValidateContent() {
-            sender.toBasicMode()
+            sender.changeModeTo(mode: .NORMAL)
         } else {
-            sender.toAlertMode()
+            sender.changeModeTo(mode: .ALERT)
+        }
+    }
+    @IBAction func idEditingChanged(_ sender: UITextField) {
+        guard let id = sender.text, !id.isEmpty else {
+            return
+        }
+        idAlertLabel.isHidden = false
+        
+        if !User.isValidId(id: id) {
+            idAlertLabel.text = SignUpAlertMessage.INVALID_ID.rawValue
+            idAlertLabel.textColor = UIColor.red
+        } else {
+            idAlertLabel.text = SignUpAlertMessage.VALID_ID.rawValue
+            idAlertLabel.textColor = UIColor.green
         }
     }
     
-    
-}
-
-extension SignUpViewController {
     
     @IBAction func passwordEditingChanged(_ sender: UITextField) {
         guard let password = sender.text, !password.isEmpty else {
@@ -122,22 +135,6 @@ extension SignUpViewController {
         }
     }
     
-    @IBAction func idEditingChanged(_ sender: UITextField) {
-        guard let id = sender.text, !id.isEmpty else {
-            return
-        }
-        idAlertLabel.isHidden = false
-        
-        if !User.isValidId(id: id) {
-            idAlertLabel.text = SignUpAlertMessage.INVALID_ID.rawValue
-            idAlertLabel.textColor = UIColor.red
-        } else {
-            idAlertLabel.text = SignUpAlertMessage.VALID_ID.rawValue
-            idAlertLabel.textColor = UIColor.green
-        }
-    }
-    
-    
     @IBAction func confirmPasswordEditingChanged(_ sender: UITextField) {
         guard let password = passwordTextEdit.text,
             let confirmPassword = confirmPasswordTextEdit.text,
@@ -156,17 +153,20 @@ extension SignUpViewController {
     }
     
     @IBAction func nameEditingChanged(_ sender: SignUpTextField) {
-        if let name = sender.text, !name.isEmpty {
+        if let name = sender.text, name.isEmpty {
             nameAlertLabel.text = SignUpAlertMessage.NAME_EMPTY.rawValue
+            nameAlertLabel.textColor = UIColor.red
             nameAlertLabel.isHidden = false
         } else {
             nameAlertLabel.isHidden = true
         }
     }
     
+}
+
+extension SignUpViewController {
     
     @IBAction func doneButtonTouched(_ sender: UIButton) {
-        
         guard let hasValidId = idTextEdit.validateContent, hasValidId(),
               let hasValidPassword = passwordTextEdit.validateContent, hasValidPassword(),
               let hasValidConfirmPassword = confirmPasswordTextEdit.validateContent, hasValidConfirmPassword(),
