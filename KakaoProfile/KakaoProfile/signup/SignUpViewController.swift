@@ -31,6 +31,40 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         confirmPasswordTextEdit.start()
         nameTextEdit.start()
         
+        idTextEdit.validateContent = {
+            if let id = self.idTextEdit.text, User.isValidId(id: id) {
+                return true
+            } else {
+                return false
+            }
+        }
+        
+        passwordTextEdit.validateContent = {
+            if let password = self.passwordTextEdit.text,
+               User.isValidPassword(password: password, patterns: [.SPECIAL, .NUMBER, .LENGTH, .CAPITAL]) {
+                return true
+            } else {
+                return false
+            }
+        }
+        
+        confirmPasswordTextEdit.validateContent = {
+            if let confirmPassword = self.confirmPasswordTextEdit.text,
+               confirmPassword == self.passwordTextEdit.text {
+                return true
+            } else {
+                return false
+            }
+        }
+        
+        nameTextEdit.validateContent = {
+            if let name = self.nameTextEdit.text, !name.isEmpty {
+                return true
+            } else {
+                return false
+            }
+        }
+        
         idTextEdit.delegate = self
         passwordTextEdit.delegate = self
         confirmPasswordTextEdit.delegate = self
@@ -42,48 +76,29 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         nameAlertLabel.text = ""
         
     }
-    @IBAction func idInputDidEnd(_ sender: SignUpTextField) {
-        if let id = sender.text, User.isValidId(id: id) {
-            sender.toBasicMode()
-        } else {
-            sender.toAlertMode()
-        }
-    }
-    @IBAction func passwordInputDidEnd(_ sender: SignUpTextField) {
-        if let password = sender.text, User.isValidPassword(password: password, patterns: [.CAPITAL, .LENGTH, .NUMBER, .SPECIAL]) {
-            sender.toBasicMode()
-        } else {
-            sender.toAlertMode()
-        }
-        
-    }
-    @IBAction func confirmPasswordInputDidEnd(_ sender: SignUpTextField) {
-        if let confirmPassword = sender.text, confirmPassword == passwordTextEdit.text {
-            sender.toBasicMode()
-        } else {
-            sender.toAlertMode()
-        }
-    }
-    @IBAction func nameInputDidEnd(_ sender: SignUpTextField) {
-        if let name = sender.text, !name.isEmpty {
-            sender.toBasicMode()
-        } else {
-            sender.toAlertMode()
-            nameAlertLabel.text = SignUpAlertMessage.NAME_EMPTY.rawValue
-            nameAlertLabel.textColor = UIColor.red
-            nameAlertLabel.isHidden = false
-        }
-    }
+    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderColor = UIColor.blue.cgColor
     }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let sender = textField as? SignUpTextField else {
+            return
+        }
+        if let hasValidateContent = sender.validateContent, hasValidateContent() {
+            sender.toBasicMode()
+        } else {
+            sender.toAlertMode()
+        }
+    }
+    
+    
 }
 
 extension SignUpViewController {
     
-    @IBAction func passwordInputChanged(_ sender: UITextField) {
+    @IBAction func passwordEditingChanged(_ sender: UITextField) {
         guard let password = sender.text, !password.isEmpty else {
             return
         }
@@ -107,7 +122,7 @@ extension SignUpViewController {
         }
     }
     
-    @IBAction func idInputChanged(_ sender: UITextField) {
+    @IBAction func idEditingChanged(_ sender: UITextField) {
         guard let id = sender.text, !id.isEmpty else {
             return
         }
@@ -123,7 +138,7 @@ extension SignUpViewController {
     }
     
     
-    @IBAction func confirmPasswordInputChanged(_ sender: UITextField) {
+    @IBAction func confirmPasswordEditingChanged(_ sender: UITextField) {
         guard let password = passwordTextEdit.text,
             let confirmPassword = confirmPasswordTextEdit.text,
             !confirmPassword.isEmpty else {
@@ -140,22 +155,24 @@ extension SignUpViewController {
         }
     }
     
+    @IBAction func nameEditingChanged(_ sender: SignUpTextField) {
+        if let name = sender.text, !name.isEmpty {
+            nameAlertLabel.text = SignUpAlertMessage.NAME_EMPTY.rawValue
+            nameAlertLabel.isHidden = false
+        } else {
+            nameAlertLabel.isHidden = true
+        }
+    }
+    
     
     @IBAction func doneButtonTouched(_ sender: UIButton) {
         
-        guard let id = idTextEdit.text, User.isValidId(id: id) else {
-            return
-        }
-        guard let password = passwordTextEdit.text, User.isValidPassword(password: password, patterns: [.SPECIAL, .NUMBER, .LENGTH, .CAPITAL]) else {
-            return
-        }
-        guard let confirmPassword = confirmPasswordTextEdit.text, password == confirmPassword else {
-            return
-        }
-        guard let name = nameTextEdit.text, !name.isEmpty else {
-            return
-        }
-        
+        guard let hasValidId = idTextEdit.validateContent, hasValidId(),
+              let hasValidPassword = passwordTextEdit.validateContent, hasValidPassword(),
+              let hasValidConfirmPassword = confirmPasswordTextEdit.validateContent, hasValidConfirmPassword(),
+              let hasValidName = nameTextEdit.validateContent, hasValidName() else {
+                  return
+              }
     
         if let data = User(id: idTextEdit.text!, password: passwordTextEdit.text!).toJson() {
             signUpRequest(data: data)

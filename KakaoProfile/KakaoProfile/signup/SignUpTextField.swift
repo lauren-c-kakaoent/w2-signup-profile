@@ -9,6 +9,8 @@ import UIKit
 
 class SignUpTextField: UITextField {
     
+    var validateContent: (() -> Bool)?
+    
     func start() {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 6
@@ -21,4 +23,5 @@ class SignUpTextField: UITextField {
     func toBasicMode() {
         self.layer.borderColor = UIColor.black.cgColor
     }
+    
 }

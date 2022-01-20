@@ -334,7 +334,6 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="passwordInputChanged:" destination="Jra-ag-Jvk" eventType="editingChanged" id="ICz-l2-LAR"/>
-                                    <action selector="passwordInputDidEnd:" destination="Jra-ag-Jvk" eventType="editingDidEnd" id="mnh-w9-nIv"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9cf-pM-Yfc" customClass="SignUpTextField" customModule="KakaoProfile" customModuleProvider="target">
@@ -343,7 +342,6 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="confirmPasswordInputChanged:" destination="Jra-ag-Jvk" eventType="editingChanged" id="l7Q-zW-yGz"/>
-                                    <action selector="confirmPasswordInputDidEnd:" destination="Jra-ag-Jvk" eventType="editingDidEnd" id="zCm-ik-rwS"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ULN-Gi-PHV" customClass="SignUpTextField" customModule="KakaoProfile" customModuleProvider="target">
@@ -351,7 +349,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="nameInputDidEnd:" destination="Jra-ag-Jvk" eventType="editingDidEnd" id="AAJ-So-9Zk"/>
+                                    <action selector="nameEditingChanged:" destination="Jra-ag-Jvk" eventType="editingChanged" id="avz-yi-o2N"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvu-L4-rdK">
@@ -398,7 +396,6 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="idInputChanged:" destination="Jra-ag-Jvk" eventType="editingChanged" id="pYn-bg-KIf"/>
-                                    <action selector="idInputDidEnd:" destination="Jra-ag-Jvk" eventType="editingDidEnd" id="BFh-fi-TTp"/>
                                 </connections>
                             </textField>
                         </subviews>
