@@ -9,7 +9,7 @@ enum SignUpAlertMessage: String {
     case INVALID_ID = "5~20자의 영문 소문자, 숫자와 특수기호_,- 만 사용 가능합니다."
     case VALID_ID = "사용 가능한 아이디입니다."
     
-    case PASSWORD_WRONG_LENGTH =  "8자 이상 16자 이하로 입력해주세요."
+    case PASSWORD_WRONG_LENGTH =  "8~16자의 영문 대소문자,숫자,특수기호만 사용 가능합니다."
     case PASSWORD_NO_CAPITAL = "영문 대문자를 최소 1자 이상 포함해주세요."
     case PASSWORD_NO_NUMBER = "숫자를 최소 1자 이상 포함해주세요."
     case PASSWORD_NO_SPECIAL =  "특수문자를 최소 1자 이상 포함해주세요."
