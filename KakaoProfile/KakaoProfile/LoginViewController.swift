@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class LoginViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet var idTextEdit: UITextField!
     @IBOutlet var passwordTextEdit: UITextField!
@@ -19,12 +18,16 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         clearIdButton.isHidden = true
         clearPasswordButton.isHidden = true
     }
-
     
+    override func viewDidAppear(_ animated: Bool) {
+        if !hasSignUpBefore() {
+            self.performSegue(withIdentifier: "showSignUp", sender: self)
+        }
+    }
+
     private func isValidLoginForm(id: String?, password: String?) -> Bool {
         return id == self.realId && password == self.realPassword
     }
@@ -51,8 +54,10 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate {
     }
     @IBAction func passwordInputChanged(_ sender: UITextField) {
         clearPasswordButton.isHidden = passwordTextEdit.text?.isEmpty ?? true
-
+    }
+    
+    private func hasSignUpBefore() -> Bool {
+        return false
     }
     
 }
-
