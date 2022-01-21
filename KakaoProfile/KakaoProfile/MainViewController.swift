@@ -24,5 +24,5 @@ class MainViewController: UIViewController {
         let request = URLRequest(url: url!)
         webView.load(request)
     }
-
+    
 }

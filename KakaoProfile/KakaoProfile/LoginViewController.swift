@@ -20,6 +20,11 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         clearIdButton.isHidden = true
         clearPasswordButton.isHidden = true
+        // [DEBUG]
+        UserDefaults.standard.removeObject(forKey: "id")
+        UserDefaults.standard.removeObject(forKey: "password")
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,7 +62,12 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     private func hasSignUpBefore() -> Bool {
+        if let _ = UserDefaults.standard.string(forKey: "id"), let _ = UserDefaults.standard.string(forKey: "password") {
+            return true
+        }
         return false
     }
+    
+    
     
 }
