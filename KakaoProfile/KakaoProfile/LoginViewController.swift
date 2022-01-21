@@ -95,9 +95,6 @@ extension LoginViewController: UIViewControllerTransitioningDelegate, UIViewCont
             
             
             let offScreenFrame = CGRect(origin: CGPoint(x: size.width * -1, y:0), size: size)
-            let onScreenFrame = CGRect(origin: .zero, size: size)
-            
-            fromView.frame = onScreenFrame
             
             let animationDuration = transitionDuration(using: transitionContext)
             
