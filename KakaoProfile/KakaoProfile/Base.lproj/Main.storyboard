@@ -387,7 +387,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="다음"/>
                                 <connections>
-                                    <action selector="doneButtonTouched:" destination="Jra-ag-Jvk" eventType="touchUpInside" id="kxj-yl-MRz"/>
+                                    <action selector="doneButtonTouched:" destination="Jra-ag-Jvk" eventType="touchUpInside" id="IHk-QK-Xww"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AaQ-6k-kbm" customClass="SignUpTextField" customModule="KakaoProfile" customModuleProvider="target">

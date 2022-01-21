@@ -13,33 +13,19 @@ enum RequestMethod: String {
 }
 
 // [TODO] Reponse 리턴하도록 변경
-func networkRequest(url: URL, method: RequestMethod, data: Data) {
+func networkRequest(url: URL, method: RequestMethod, data: Data) async throws -> (Data, URLResponse)? {
     var request = URLRequest(url: url)
     request.httpMethod = method.rawValue
     request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    let task = URLSession.shared.uploadTask(with: request, from: data) { data, response, error in
-        if let error = error {
-            print("error: \(error)")
-            return
-        }
-        guard let response = response as? HTTPURLResponse,
-               (200...299).contains(response.statusCode) else {
-               print ("server error")
-               return
-       }
-       if let mimeType = response.mimeType,
-           mimeType == "application/json",
-           let data = data,
-           let dataString = String(data: data, encoding: .utf8) {
-           print ("got data: \(dataString)")
-       }
-
-    }
-    task.resume()
+    return try? await URLSession.shared.data(for: request, delegate: nil)
 }
 
-func signUpRequest(data: Data) {
+func signUpRequest(data: Data) async -> HTTPURLResponse? {
     let url = URL(string: "https://api.codesquad.kr/signup")!
-    return networkRequest(url: url, method: .POST, data: data)
+    let result = try? await networkRequest(url: url, method: .POST, data: data)
+    if let (_, response) = result {
+        return response as? HTTPURLResponse
+    }
+    return nil
 }
 

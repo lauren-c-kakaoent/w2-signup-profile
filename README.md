@@ -22,3 +22,10 @@
  
 <img src="https://images.velog.io/images/lauren-c/post/1eb09965-4752-4d9d-bd0e-53e8fd9edc40/image.png" width=35%><img src="https://images.velog.io/images/lauren-c/post/1936a588-1c26-42eb-8410-44c6da098138/image.png" width=35%>
 <img src = "https://images.velog.io/images/lauren-c/post/c9347bcf-72da-449c-8d06-7cde083606c5/image.png" width=35%><img src="https://images.velog.io/images/lauren-c/post/e3dfe568-6b64-4674-b49a-fc6ebae74930/image.png" width=35%>
+
+## Task3
+- 입력 중일 때 TextField가 파란색으로, 에러가 생긴 경우에는 빨간색으로 표시됩니다.
+- 잘못된 입력인 경우 관련된 메시지가 TextField 하단에 표시됩니다.
+- 모든 입력이 완료되면 다음 버튼을 통해 로그인 화면으로 이동합니다.
+<img src="https://images.velog.io/images/lauren-c/post/aa864acd-6056-49eb-8c7d-8e5c28572698/Simulator%20Screen%20Shot%20-%20iPhone%2012%20-%202022-01-21%20at%2011.26.11.png" width=35%>
+<img src="https://images.velog.io/images/lauren-c/post/85795462-3ebe-42df-ba88-91248193d795/Simulator%20Screen%20Shot%20-%20iPhone%2012%20-%202022-01-21%20at%2011.26.38.png" width=35%>
