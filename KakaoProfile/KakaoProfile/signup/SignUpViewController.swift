@@ -153,12 +153,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func nameEditingChanged(_ sender: SignUpTextField) {
-        if let name = sender.text, name.isEmpty {
+        if let name = sender.text, !name.isEmpty {
+            nameAlertLabel.isHidden = true
+        } else {
             nameAlertLabel.text = SignUpAlertMessage.NAME_EMPTY.rawValue
             nameAlertLabel.textColor = UIColor.red
             nameAlertLabel.isHidden = false
-        } else {
-            nameAlertLabel.isHidden = true
         }
     }
     
@@ -167,6 +167,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 extension SignUpViewController {
     
     @IBAction func doneButtonTouched(_ sender: UIButton) {
+        
         guard let hasValidId = idTextEdit.validateContent, hasValidId(),
               let hasValidPassword = passwordTextEdit.validateContent, hasValidPassword(),
               let hasValidConfirmPassword = confirmPasswordTextEdit.validateContent, hasValidConfirmPassword(),
@@ -174,9 +175,15 @@ extension SignUpViewController {
                   return
               }
     
-        if let data = User(id: idTextEdit.text!, password: passwordTextEdit.text!).toJson() {
-            signUpRequest(data: data)
+        if let id = idTextEdit.text, let password = passwordTextEdit.text, let data = User(id: id, password: password).toJson() {
+            Task {
+                let response = await signUpRequest(data: data)
+                if let response = response, response.statusCode == 200 {
+                    UserDefaults.standard.set(id, forKey: "id")
+                    UserDefaults.standard.set(password, forKey: "password")
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
         }
-//        self.dismiss(animated: true, completion: nil)
     }
 }

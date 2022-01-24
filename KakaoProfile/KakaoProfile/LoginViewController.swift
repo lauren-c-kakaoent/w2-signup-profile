@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UINavigationControllerDelegate {
+class LoginViewController: UIViewController {
     @IBOutlet var idTextEdit: UITextField!
     @IBOutlet var passwordTextEdit: UITextField!
     @IBOutlet var clearIdButton: UIButton!
@@ -18,13 +18,27 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         clearIdButton.isHidden = true
         clearPasswordButton.isHidden = true
+        // [DEBUG]
+        UserDefaults.standard.removeObject(forKey: "id")
+        UserDefaults.standard.removeObject(forKey: "password")
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if !hasSignUpBefore() {
             self.performSegue(withIdentifier: "showSignUp", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destination = segue.destination as? SignUpViewController {
+            destination.modalPresentationStyle = .custom
+            destination.transitioningDelegate = self
         }
     }
 
@@ -57,7 +71,42 @@ class LoginViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     private func hasSignUpBefore() -> Bool {
+        if let _ = UserDefaults.standard.string(forKey: "id"), let _ = UserDefaults.standard.string(forKey: "password") {
+            return true
+        }
         return false
     }
     
+    
+    
+}
+extension LoginViewController: UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 2.0
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+            
+            let fromView = transitionContext.viewController(forKey: .from)!.view!
+            
+            let size = CGSize(
+                width: UIScreen.main.bounds.size.width,
+                height: UIScreen.main.bounds.size.height)
+            
+            
+            let offScreenFrame = CGRect(origin: CGPoint(x: size.width * -1, y:0), size: size)
+            
+            let animationDuration = transitionDuration(using: transitionContext)
+            
+            UIView.animate(withDuration: animationDuration, animations: {
+                fromView.frame = offScreenFrame
+            }, completion: { (success) in
+                fromView.removeFromSuperview()
+                transitionContext.completeTransition(success)
+            })
+        }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return self
+    }
 }

@@ -7,24 +7,22 @@
 
 import UIKit
 import WebKit
-class MainViewController: UIViewController, WKUIDelegate {
+class MainViewController: UIViewController {
     
     var webView: WKWebView!
-    
-    override func loadView() {
-        let webConfiguration = WKWebViewConfiguration()
-        webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        webView.uiDelegate = self
-        view = webView
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "뉴스"
         
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: view.frame, configuration: webConfiguration)
+        
+        view.addSubview(webView)
+        
         let url = URL(string: "https://page.kakao.com")
         let request = URLRequest(url: url!)
         webView.load(request)
     }
-
+    
 }

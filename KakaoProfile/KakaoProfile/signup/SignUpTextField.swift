@@ -28,7 +28,7 @@ class SignUpTextField: UITextField {
             self.layer.borderColor = UIColor.red.cgColor
         case .WRITING:
             self.layer.borderColor = UIColor.blue.cgColor
-        
+            
         }
         
     }
